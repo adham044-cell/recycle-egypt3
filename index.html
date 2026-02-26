@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recycle Egypt | منصة ذكية لإدارة المخلفات</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Leaflet CSS for Map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- شريط التنقل -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <span class="logo-icon">♻️</span>
+                <span class="logo-text">Recycle Egypt</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link active" data-page="home">الرئيسية</a></li>
+                <li><a href="#guide" class="nav-link" data-page="guide">دليل التدوير</a></li>
+                <li><a href="#map" class="nav-link" data-page="map">أقرب أماكن</a></li>
+                <li><a href="#impact" class="nav-link" data-page="impact">التأثير البيئي</a></li>
+                <li><a href="#stats" class="nav-link" data-page="stats">إحصائياتي</a></li>
+            </ul>
+            <button class="mobile-menu-btn" aria-label="القائمة">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- الصفحة الرئيسية -->
+    <section id="home" class="page active">
+        <div class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">معاً لمصر نظيفة وخضراء</h1>
+                    <p class="hero-subtitle">
+                        منصة مصر تُعيد التدوير تساعدك على تحويل مخلفاتك اليومية إلى إنجازات بيئية ملموسة
+                    </p>
+                    <button class="btn btn-primary btn-large" onclick="navigateTo('guide')">
+                        ابدأ الآن
+                        <span class="btn-icon">←</span>
+                    </button>
+                </div>
+                <div class="hero-image">
+                    <div class="recycle-illustration">
+                        <div class="earth">
+                            <span class="earth-emoji">🌍</span>
+                        </div>
+                        <div class="floating-items">
+                            <span class="float-item">♻️</span>
+                            <span class="float-item">🌱</span>
+                            <span class="float-item">💚</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="problem-solution">
+            <div class="container">
+                <div class="section-header">
+                    <h2>المشكلة والحل</h2>
+                    <p>نعمل معاً لحماية بيئتنا من خلال التدوير الذكي</p>
+                </div>
+                
+                <div class="cards-grid">
+                    <div class="info-card problem">
+                        <div class="card-icon">⚠️</div>
+                        <h3>المشكلة</h3>
+                        <ul>
+                            <li>تزايد كمية المخلفات في مصر بمعدل 20 مليون طن سنوياً</li>
+                            <li>تراكم النفايات البلاستيكية تستغرق 400 سنة للتحلل</li>
+                            <li>انبعاثات غازات الاحتباس الحراري تهدد مستقبل الأجيال</li>
+                            <li>إهدار الموارد الطبيعية بسبب عدم الاستغلال الأمثل</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-card solution">
+                        <div class="card-icon">💡</div>
+                        <h3>الحل</h3>
+                        <ul>
+                            <li>منصة تفاعلية لحساب تأثيرك البيئي الإيجابي</li>
+                            <li>دليل شامل لأنواع المخلفات وطرق تدويرها</li>
+                            <li>تتبع إنجازاتك الشخصية ومساهمتك في حماية البيئة</li>
+                            <li>تحويل الأفعال اليومية إلى نتائج قابلة للقياس</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="features">
+            <div class="container">
+                <div class="section-header">
+                    <h2>مميزات المنصة</h2>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">📊</div>
+                        <h4>حساب ذكي</h4>
+                        <p>احسب تأثيرك البيئي بدقة</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">📍</div>
+                        <h4>خريطة تفاعلية</h4>
+                        <p>اعثر على أقرب نقاط التدوير</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">📱</div>
+                        <h4>سجل شخصي</h4>
+                        <p>احتفظ بإنجازاتك على جهازك</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🎯</div>
+                        <h4>أهداف قابلة للقياس</h4>
+                        <p>راقب تقدمك يومياً</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- دليل التدوير -->
+    <section id="guide" class="page">
+        <div class="container">
+            <div class="page-header">
+                <h1>دليل التدوير</h1>
+                <p>اختر نوع المخلفات وأدخل الكمية لحساب تأثيرك البيئي</p>
+            </div>
+
+            <div class="waste-types">
+                <h3>اختر نوع المخلفات</h3>
+                <div class="waste-grid">
+                    <div class="waste-card" data-type="plastic" onclick="selectWasteType('plastic')">
+                        <div class="waste-icon">🥤</div>
+                        <h4>بلاستيك</h4>
+                        <p>زجاجات - أكياس - أواني</p>
+                        <span class="impact-badge">تقليل 2 كجم CO₂ لكل كجم</span>
+                    </div>
+                    
+                    <div class="waste-card" data-type="paper" onclick="selectWasteType('paper')">
+                        <div class="waste-icon">📰</div>
+                        <h4>ورق</h4>
+                        <p>جرائد - كتب - كرتون</p>
+                        <span class="impact-badge">توفير 17 لتر ماء لكل كجم</span>
+                    </div>
+                    
+                    <div class="waste-card" data-type="metal" onclick="selectWasteType('metal')">
+                        <div class="waste-icon">🥫</div>
+                        <h4>معادن</h4>
+                        <p>علب - ألومنيوم - حديد</p>
+                        <span class="impact-badge">توفير 95% من الطاقة</span>
+                    </div>
+                    
+                    <div class="waste-card" data-type="electronics" onclick="selectWasteType('electronics')">
+                        <div class="waste-icon">📱</div>
+                        <h4>إلكترونيات</h4>
+                        <p>هواتف - حواسيب - بطاريات</p>
+                        <span class="impact-badge">منع تلوث خطير</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quantity-section" id="quantitySection" style="display: none;">
+                <div class="selected-type-display">
+                    <span>النوع المختار:</span>
+                    <strong id="selectedTypeName">-</strong>
+                </div>
+                
+                <div class="quantity-input-group">
+                    <label for="quantity">أدخل الكمية (بالكيلوجرام)</label>
+                    <div class="input-wrapper">
+                        <input 
+                            type="text" 
+                            inputmode="decimal"
+                            pattern="[0-9]*[.]?[0-9]*"
+                            id="quantity" 
+                            min="0.1" 
+                            max="1000" 
+                            step="0.1" 
+                            placeholder="مثال: 5"
+                            oninput="validateNumberInput(this)"
+                        >
+                        <span class="unit">كجم</span>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary btn-large" onclick="calculateImpact()">
+                    احسب التأثير البيئي
+                    <span class="btn-icon">←</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- خريطة أقرب أماكن إعادة التدوير -->
+    <section id="map" class="page">
+        <div class="container">
+            <div class="page-header">
+                <h1>🗺️ أقرب أماكن إعادة التدوير</h1>
+                <p>اعثر على أقرب نقاط جمع المخلفات القابلة لإعادة التدوير</p>
+            </div>
+
+            <!-- حالة تحميل الخريطة -->
+            <div class="map-loading" id="mapLoading">
+                <div class="loading-spinner"></div>
+                <p>جاري تحديد موقعك...</p>
+            </div>
+
+            <!-- رسالة خطأ الموقع -->
+            <div class="map-error" id="mapError" style="display: none;">
+                <div class="error-icon">📍</div>
+                <h3>لا يمكن تحديد موقعك</h3>
+                <p>يرجى السماح بالوصول إلى الموقع أو التحقق من إعدادات المتصفح</p>
+                <button class="btn btn-primary" onclick="retryLocation()">
+                    إعادة المحاولة
+                </button>
+            </div>
+
+            <!-- حاوية الخريطة -->
+            <div class="map-wrapper" id="mapWrapper" style="display: none;">
+                <!-- شريط التصفية -->
+                <div class="map-filters">
+                    <span class="filter-label">تصفية حسب النوع:</span>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="all" onclick="filterMarkers('all')">
+                            <span class="filter-icon">♻️</span>
+                            الكل
+                        </button>
+                        <button class="filter-btn" data-filter="plastic" onclick="filterMarkers('plastic')">
+                            <span class="filter-icon">🥤</span>
+                            بلاستيك
+                        </button>
+                        <button class="filter-btn" data-filter="paper" onclick="filterMarkers('paper')">
+                            <span class="filter-icon">📰</span>
+                            ورق
+                        </button>
+                        <button class="filter-btn" data-filter="metal" onclick="filterMarkers('metal')">
+                            <span class="filter-icon">🥫</span>
+                            معادن
+                        </button>
+                        <button class="filter-btn" data-filter="electronics" onclick="filterMarkers('electronics')">
+                            <span class="filter-icon">📱</span>
+                            إلكترونيات
+                        </button>
+                    </div>
+                </div>
+
+                <!-- الخريطة -->
+                <div id="recyclingMap" class="recycling-map"></div>
+
+                <!-- معلومات إضافية -->
+                <div class="map-info">
+                    <div class="info-item">
+                        <span class="info-icon">📍</span>
+                        <span>المسافة محسوبة من موقعك الحالي</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">🕐</span>
+                        <span>أوقات العمل تختلف حسب الموقع</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- التأثير البيئي -->
+    <section id="impact" class="page">
+        <div class="container">
+            <div class="page-header">
+                <h1>التأثير البيئي</h1>
+                <p>إليك نتائج مساهمتك في حماية البيئة</p>
+            </div>
+
+            <div class="impact-summary">
+                <div class="impact-card main">
+                    <div class="impact-icon">🎯</div>
+                    <h3>الكمية المُعاد تدويرها</h3>
+                    <div class="impact-value">
+                        <span class="number" id="totalQuantity">0</span>
+                        <span class="unit">كجم</span>
+                    </div>
+                    <p class="impact-type" id="impactTypeText">-</p>
+                </div>
+            </div>
+
+            <div class="impact-results">
+                <h3>الفوائد البيئية المحققة</h3>
+                <div class="results-grid">
+                    <div class="result-card">
+                        <div class="result-icon">☁️</div>
+                        <div class="result-label">تقليل انبعاثات CO₂</div>
+                        <div class="result-value">
+                            <span class="number" id="co2Reduction">0</span>
+                            <span class="unit">كجم</span>
+                        </div>
+                        <p class="result-desc">كأنك أوقفت سيارة عن السير لمسافة كيلومتر</p>
+                    </div>
+                    
+                    <div class="result-card">
+                        <div class="result-icon">💧</div>
+                        <div class="result-label">توفير المياه</div>
+                        <div class="result-value">
+                            <span class="number" id="waterSaved">0</span>
+                            <span class="unit">لتر</span>
+                        </div>
+                        <p class="result-desc">كمية كافية لشرب شخص لعدة أيام</p>
+                    </div>
+                    
+                    <div class="result-card">
+                        <div class="result-icon">⚡</div>
+                        <div class="result-label">توفير الطاقة</div>
+                        <div class="result-value">
+                            <span class="number" id="energySaved">0</span>
+                            <span class="unit">كيلوواط/ساعة</span>
+                        </div>
+                        <p class="result-desc">طاقة تكفي لإنارة منزل لساعات</p>
+                    </div>
+                    
+                    <div class="result-card">
+                        <div class="result-icon">🌳</div>
+                        <div class="result-label">الأشجار المحمية</div>
+                        <div class="result-value">
+                            <span class="number" id="treesSaved">0</span>
+                            <span class="unit">شجرة</span>
+                        </div>
+                        <p class="result-desc">أشجار تم حمايتها من القطع</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn btn-secondary" onclick="saveToHistory()">
+                    💾 حفظ في سجلي
+                </button>
+                <button class="btn btn-primary" onclick="navigateTo('guide')">
+                    إضافة كمية أخرى
+                    <span class="btn-icon">←</span>
+                </button>
+                <button class="btn btn-success" onclick="navigateTo('stats')">
+                    عرض إحصائياتي
+                    <span class="btn-icon">←</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- الإحصائيات الشخصية -->
+    <section id="stats" class="page">
+        <div class="container">
+            <div class="page-header">
+                <h1>إحصائياتي</h1>
+                <p>سجل مساهماتك البيئية الشخصية</p>
+            </div>
+
+            <div class="stats-overview">
+                <div class="stat-card total">
+                    <div class="stat-icon">♻️</div>
+                    <div class="stat-label">إجمالي ما تم تدويره</div>
+                    <div class="stat-value">
+                        <span class="number" id="statsTotalRecycled">0</span>
+                        <span class="unit">كجم</span>
+                    </div>
+                </div>
+                
+                <div class="stat-card co2">
+                    <div class="stat-icon">☁️</div>
+                    <div class="stat-label">تقليل CO₂</div>
+                    <div class="stat-value">
+                        <span class="number" id="statsTotalCO2">0</span>
+                        <span class="unit">كجم</span>
+                    </div>
+                </div>
+                
+                <div class="stat-card water">
+                    <div class="stat-icon">💧</div>
+                    <div class="stat-label">توفير المياه</div>
+                    <div class="stat-value">
+                        <span class="number" id="statsTotalWater">0</span>
+                        <span class="unit">لتر</span>
+                    </div>
+                </div>
+                
+                <div class="stat-card entries">
+                    <div class="stat-icon">📋</div>
+                    <div class="stat-label">عدد المساهمات</div>
+                    <div class="stat-value">
+                        <span class="number" id="statsTotalEntries">0</span>
+                        <span class="unit">مساهمة</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="history-section">
+                <div class="section-header-with-action">
+                    <h3>سجل المساهمات</h3>
+                    <button class="btn btn-danger btn-small" onclick="clearHistory()">
+                        🗑️ مسح السجل
+                    </button>
+                </div>
+                
+                <div class="history-table-wrapper">
+                    <table class="history-table" id="historyTable">
+                        <thead>
+                            <tr>
+                                <th>التاريخ</th>
+                                <th>النوع</th>
+                                <th>الكمية</th>
+                                <th>تقليل CO₂</th>
+                                <th>توفير المياه</th>
+                            </tr>
+                        </thead>
+                        <tbody id="historyTableBody">
+                            <!-- يتم ملؤها بالJavaScript -->
+                        </tbody>
+                    </table>
+                    <div class="empty-state" id="emptyState">
+                        <div class="empty-icon">📭</div>
+                        <p>لا توجد مساهمات مسجلة بعد</p>
+                        <button class="btn btn-primary" onclick="navigateTo('guide')">
+                            ابدأ أول مساهمة
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- التذييل -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-icon">♻️</span>
+                    <span>Recycle Egypt</span>
+                </div>
+                <p class="footer-text">
+                    مشروع تعليمي لمسابقة المدارس الثانوية - نحو بيئة مستدامة
+                </p>
+                <p class="footer-copyright">
+                    © 2026 Recycle Egypt - جميع الحقوق محفوظة
+                </p>
+                <p class="footer-credit">
+                    Built with <i class="fa-solid fa-heart heart"></i> BY | ENG/Adham
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- رسائل التنبيه -->
+    <div class="toast" id="toast">
+        <span class="toast-icon">✅</span>
+        <span class="toast-message" id="toastMessage">تم الحفظ بنجاح!</span>
+    </div>
+
+    <!-- Leaflet JS for Map -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="script.js"></script>
+    <script src="map.js"></script>
+    <script src="map_backup.js"></script>
+</body>
+</html>
